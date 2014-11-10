@@ -1,17 +1,17 @@
 #container {
   margin: 48px auto;
   width: 960px;
-	> section {
-		clear: both;
+  > section {
+ 	  clear: both;
     p{
       font-size: 22px;
     }
 	}
 	> header {
- 		 margin-bottom: 46px;
+    margin-bottom: 46px;
 		> h1{
-   			float: left;
-  			margin: 0;
+   	  float: left;
+  		margin: 0;
 		}
 	}
 }
@@ -27,8 +27,8 @@
 
 /* MISC */
 .clearfix{
-	&:after {
-		content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;	
+  &:after {
+	  content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;	
 	}
   * html & {
 		height:1%;
@@ -36,7 +36,7 @@
 }
 
 html[xmlns]{
-		&.clearfix{
-		  display:block;
-		}	
+  &.clearfix{
+   display:block;
+	}	
 }
