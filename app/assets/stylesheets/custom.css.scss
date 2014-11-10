@@ -2,37 +2,40 @@
   margin: 48px auto;
   width: 960px;
   > section {
- 	  clear: both;
+    clear: both;
     p{
       font-size: 22px;
     }
-	}
-	> header {
+  }
+  > header {
     margin-bottom: 46px;
-		> h1{
-   	  float: left;
+    > h1{
+      float: left;
       margin: 0;
-		}
-	}
+    }
+  }
 }
+
 .navigation-links {
   float: right;
   li {
-  	display: inline-block;
-  	margin: 0 16px;
-	}
+    display: inline-block;
+    margin: 0 16px;
+  }
 }
-/* MISC */
-.clearfix{
+
+// MISC
+.clearfix {
   &:after {
-	  content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;
-	}
+    content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;
+  }
   * html & {
-		height:1%;
-	}
+    height:1%;
+  }
 }
-html[xmlns]{
+
+html[xmlns] {
   &.clearfix{
-   display:block;
-	}
+    display:block;
+  }
 }
