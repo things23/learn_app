@@ -9,7 +9,8 @@
       <p><%= card.translated_text %></p>
     </div>
     <div class="review">
-      <p><%= card.review_date.strftime("Review Date: %d/%m/%Y") %></p>
+      <h3>Review date</h3>
+      <p><%= card.review_date.strftime("%d/%m/%Y") %></p>
     </div>
   </div>
 <% end %>
