@@ -1,16 +1,15 @@
 <% @cards.each do |card| %>
-  <div class="card">
-    <div class="original_txt">
-      <h3>Original text:</h3>
+  <div class = "card">
+    <div class = "original_txt">
       <p><%= card.original_text %></p>
     </div>
-    <div class="translated_txt">
-      <h3>Translated text</h3>
+    <div class = "translated_txt">
       <p><%= card.translated_text %></p>
     </div>
-    <div class="review">
-      <h3>Review date</h3>
-      <p><%= card.review_date.strftime("%d/%m/%Y") %></p>
+    <span><%= card.review_date.strftime("%d/%m/%Y") %></span>
+    <div>
+      <%= link_to "Изменить", edit_card_path(card) %>
+      <%= link_to "Удалить", @card, method: :delete, data: { comfirm: 'Are you sure?'} %>
     </div>
   </div>
 <% end %>

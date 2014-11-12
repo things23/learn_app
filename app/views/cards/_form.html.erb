@@ -1,0 +1,8 @@
+<%= simple_form_for(@card) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :original_text %>
+  <%= f.input :translated_text %>
+  <%= f.input :review_date %>
+  <%= f.error :base %>
+  <%= f.button :submit %>
+<% end %>
