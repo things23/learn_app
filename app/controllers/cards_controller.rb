@@ -26,8 +26,8 @@ class CardsController < ApplicationController
     if @card.update(cards_params)
       redirect_to cards_path
     else
-     render 'edit'
-   end
+      render 'edit'
+    end
   end
 
   def destroy
@@ -36,11 +36,12 @@ class CardsController < ApplicationController
   end
 
   private
-    def find_card
-      @card = Card.find(params[:id])
-    end
 
-    def cards_params
-      params.require(:card).permit(:original_text, :translated_text, :review_date)
-    end
+  def find_card
+    @card = Card.find(params[:id])
+  end
+
+  def cards_params
+    params.require(:card).permit(:original_text,:translated_text,:review_date)
+  end
 end
