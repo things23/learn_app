@@ -43,6 +43,6 @@ class CardsController < ApplicationController
 
   def cards_params
     params.require(:card).permit(:original_text, :translated_text,
-      :review_date)
+    :review_date)
   end
 end
