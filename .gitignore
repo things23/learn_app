@@ -7,6 +7,6 @@ capybara-*.html
 /db/*.sqlite3-journal
 /public/system
 /config/locales/
+config/initializers/simple_form.rb
 database.yml
 *.yml
-
