@@ -9,7 +9,7 @@
     <span><%= card.review_date.strftime("%d/%m/%Y") %></span>
     <div>
       <%= link_to "Изменить", edit_card_path(card) %>
-      <%= link_to "Удалить", @card, method: :delete, data: { comfirm: 'Are you sure?'} %>
+      <%= link_to "Удалить", card, method: :delete, data: { confirm: 'Are you sure?'} %>
     </div>
   </div>
 <% end %>
