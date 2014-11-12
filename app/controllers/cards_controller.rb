@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :find_card, only: [:edit, :update, :destroy]
+
   def index
     @cards = Card.all
   end
@@ -31,7 +32,6 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-
     redirect_to cards_path
   end
 
