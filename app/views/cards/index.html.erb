@@ -1,9 +1,9 @@
 <% @cards.each do |card| %>
   <div class = "card">
-    <div class = "original_txt">
+    <div class = "original-txt">
       <p><%= card.original_text %></p>
     </div>
-    <div class = "translated_txt">
+    <div class = "translated-txt">
       <p><%= card.translated_text %></p>
     </div>
     <span><%= card.review_date.strftime("%d/%m/%Y") %></span>

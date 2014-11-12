@@ -6,6 +6,5 @@ capybara-*.html
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
-/lib/templates/
 database.yml
 *.yml
