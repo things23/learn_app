@@ -30,12 +30,12 @@
     content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;
   }
   * html & {
-    height:1%;
+    height: 1%;
   }
 }
 
 html[xmlns] {
   &.clearfix{
-    display:block;
+    display: block;
   }
 }
