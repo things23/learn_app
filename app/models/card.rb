@@ -8,5 +8,4 @@ class Card < ActiveRecord::Base
       errors.add(:base, "Original text and translated must be different")
     end
   end
-
 end
