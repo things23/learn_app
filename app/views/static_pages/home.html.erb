@@ -1,1 +1,19 @@
 <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+<% flash.each do |key, value| %>
+<div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+<% if @card %>
+  <div class = "card">
+    <div class = "original-txt">
+      <p><%= @card.original_text %></p>
+    </div>
+    <%= form_tag check_path, method: :put do %>
+    <div>
+      <%= text_field_tag(:translate, nil, placeholder: 'Enter translete here') %>
+    </div>
+      <%= submit_tag("Проверить", class: "form-submit") %>
+    <% end %>
+  </div>
+<% else %>
+  <p class = "end-training">Вы изучили все слова. Тренировка окончена.</p>
+<% end %>
