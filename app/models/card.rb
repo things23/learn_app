@@ -1,17 +1,16 @@
 class Card < ActiveRecord::Base
   validates :original_text, presence: true, uniqueness: true
   validates :translated_text, presence: true
-  validate :original_text_cannot_be_equal_to_translated_text, on: [:create, :update]
+  validate :original_text_cannot_be_equal_to_translated_text
 
-  scope :ordered, -> { order(review_date: :asc) }
-  scope :to_exercise, -> { where('review_date <= ?', Time.now) }
+  scope :for_review, -> { where('review_date <= ?', Time.now).sample }
 
-  def correct(translate)
-    self.translated_text.mb_chars.downcase == translate.mb_chars.downcase
+  def check_answer(translate)
+    translated_text.mb_chars.downcase == translate.mb_chars.downcase
   end
 
-  def review_later
-    self.update(review_date: 3.days.from_now)
+  def change_review_later
+    update(review_date: 3.days.from_now)
   end
 
   def original_text_cannot_be_equal_to_translated_text

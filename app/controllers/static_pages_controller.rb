@@ -4,9 +4,9 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def check
-    if @card.correct(params[:translate])
-      @card.review_later
+  def review_card
+    if @card.check_answer(params[:translate])
+      @card.change_review_later
       flash[:right] = "Правильный ответ"
       redirect_to root_path
     else
@@ -18,6 +18,6 @@ class StaticPagesController < ApplicationController
   private
 
     def set_card
-      @card = Card.to_exercise.ordered.first
+      @card = Card.for_review
     end
 end

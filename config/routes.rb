@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
   resources :cards
-  put 'check', to: 'static_pages#check'
+  put 'review_card', to: 'static_pages#review_card'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
