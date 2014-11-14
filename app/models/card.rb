@@ -9,7 +9,7 @@ class Card < ActiveRecord::Base
     translated_text.mb_chars.downcase == translate.mb_chars.downcase
   end
 
-  def change_review_later
+  def change_review_date
     update(review_date: 3.days.from_now)
   end
 

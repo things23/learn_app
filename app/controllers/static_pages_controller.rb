@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
 
   def review_card
     if @card.check_answer(params[:translate])
-      @card.change_review_later
+      @card.change_review_date
       flash[:right] = "Правильный ответ"
       redirect_to root_path
     else
