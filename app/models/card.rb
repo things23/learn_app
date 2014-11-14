@@ -3,10 +3,10 @@ class Card < ActiveRecord::Base
   validates :translated_text, presence: true
   validate :original_text_cannot_be_equal_to_translated_text
 
-  scope :for_review, -> { where('review_date <= ?', Time.now).sample }
+  scope :for_review, -> { where('review_date <= ?', Time.now).order("RANDOM()") }
 
-  def check_answer(translate)
-    translated_text.mb_chars.downcase == translate.mb_chars.downcase
+  def check_answer(translation)
+    translated_text.mb_chars.downcase == translation.mb_chars.downcase
   end
 
   def change_review_date
