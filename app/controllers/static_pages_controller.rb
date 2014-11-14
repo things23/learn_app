@@ -16,6 +16,7 @@ class StaticPagesController < ApplicationController
   end
 
   private
+
     def set_card
       @card = Card.to_exercise.ordered.first
     end
