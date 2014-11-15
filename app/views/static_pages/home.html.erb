@@ -8,13 +8,13 @@
       <p><%= @card.original_text %></p>
     </div>
     <%= form_tag review_card_path, method: :put do %>
-    <div>
-      <%= hidden_field_tag 'card_id', @card.id %>
-      <%= text_field_tag(:translation, nil, placeholder: 'Enter translete here') %>
-    </div>
+      <div>
+        <%= hidden_field_tag 'card_id', @card.id %>
+        <%= text_field_tag(:translation, nil, placeholder: 'Enter translete here') %>
+      </div>
       <%= submit_tag("Проверить", class: "form-submit") %>
     <% end %>
   </div>
 <% else %>
-  <p class = "end-training">Вы изучили все слова. Тренировка окончена.</p>
+  <p class="end-training">Вы изучили все слова. Тренировка окончена.</p>
 <% end %>
