@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :card do
-    #sequence(:original_text) { |i| "Test#{i}"}
     original_text "Test"
     translated_text 'Тест'
     review_date Time.now
