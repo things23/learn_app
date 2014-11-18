@@ -16,6 +16,7 @@ gem 'spring',        group: :development
 
 group :test do
   gem 'capybara', '~> 2.4.4'
+  gem 'poltergeist', '~> 1.5.1'
   gem 'libnotify', '~> 0.8.4'
 end
 
@@ -26,6 +27,7 @@ group :development, :test do
   gem 'spork-rails', '~> 4.0.0'
   gem 'guard-spork', '~> 1.5.1'
   gem 'childprocess', '~> 0.5.5'
+  gem 'database_cleaner', '~> 1.3.0'
 end
 
 # Use ActiveModel has_secure_password
