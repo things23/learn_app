@@ -7,4 +7,3 @@ capybara-*.html
 /db/*.sqlite3-journal
 /public/system
 database.yml
-*.yml
