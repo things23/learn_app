@@ -1,10 +1,10 @@
 # encoding: utf-8
-require 'rails_helper'
-require 'spec_helper'
+require "rails_helper"
+require "spec_helper"
 
 describe "Home page" do
 
-  let!(:card) { FactoryGirl.create(:card)}
+  let!(:card) { FactoryGirl.create(:card) }
   before(:each) { visit root_path }
 
   it "has logo" do
