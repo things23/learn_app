@@ -11,7 +11,7 @@ describe Card do
   it { is_expected.to respond_to(:original_text) }
   it { is_expected.to respond_to(:translated_text) }
   it { is_expected.to respond_to(:review_date) }
-  it { is_expected.to respond_to(:user)}
+  it { is_expected.to respond_to(:user) }
 
   describe "translated_text" do
     let(:card) { FactoryGirl.build(:card, original_text: "original", translated_text: "original") }
