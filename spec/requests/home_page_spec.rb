@@ -1,4 +1,3 @@
-# encoding: utf-8
 require "rails_helper"
 
 describe "Home page" do
@@ -9,6 +8,6 @@ describe "Home page" do
   it "checks answer" do
     fill_in "translation", with: "right"
     click_button "Check"
-    expect(page).to have_content("Правильный ответ")
+    expect(page).to have_content("Correct")
   end
 end
