@@ -1,5 +1,5 @@
 == README
-
+https://travis-ci.org/things23/flashcardr.svg?branch=requast-spec-testing
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
