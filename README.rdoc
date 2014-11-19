@@ -2,5 +2,3 @@
 {<img src="https://travis-ci.org/things23/flashcardr.svg?branch=requast-spec-testing" alt="Build Status" />}[https://travis-ci.org/things23/flashcardr]
 
 Flashcardr
-
-<tt>rake doc:app</tt>.
