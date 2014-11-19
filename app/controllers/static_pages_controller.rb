@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
     @card = Card.find(params[:card_id])
     if @card.check_answer(params[:translation])
       @card.change_review_date
-      flash[:right] = "Correct!"
+      flash[:right] = "Правильный ответ"
     else
       flash[:wrong] = "Неправильный ответ"
     end

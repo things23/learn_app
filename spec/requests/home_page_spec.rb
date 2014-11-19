@@ -6,8 +6,8 @@ describe "Home page" do
   before(:each) { visit root_path }
 
   it "checks answer" do
-    fill_in "translation", with: "right"
+    fill_in "translation", with: "Тест"
     click_button "Check"
-    expect(page).to have_content("Correct")
+    expect(page).to have_content("Правильный ответ")
   end
 end
