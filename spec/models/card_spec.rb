@@ -52,7 +52,7 @@ describe Card do
       expect(card.check_answer(translation)).to be false
     end
     it "is right answer " do
-      translation = "right"
+      translation = "Тест"
       expect(card.check_answer(translation)).to be true
     end
   end
