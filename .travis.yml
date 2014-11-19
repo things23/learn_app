@@ -3,4 +3,5 @@ rvm:
   - 2.1.3
 before_script:
   - cp config/database.yml.travis config/database.yml
+  - "RAILS_ENV=test bundle exec rake db:create db:migrate"
 script: bundle exec rspec spec
