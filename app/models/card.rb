@@ -3,6 +3,7 @@ class Card < ActiveRecord::Base
   validates :original_text, presence: true, uniqueness: true
   validates :translated_text, presence: true
   validate :original_text_cannot_be_equal_to_translated_text
+  validates :user_id, presence: true
 
   scope :for_review, -> { where('review_date <= ?', Time.now).order("RANDOM()") }
 
