@@ -20,14 +20,6 @@ describe Card do
     end
   end
 
-  describe "uniqueness" do
-    it "has unique original_text" do
-      card = FactoryGirl.build(:card, original_text: "unique original text")
-      FactoryGirl.create(:card, original_text: "unique original text")
-      expect(card).not_to be_valid
-    end
-  end
-
   describe "presence of attribute" do
     context "has not original_text" do
       let(:card) { FactoryGirl.build(:card_withount_original_text)  }

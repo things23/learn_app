@@ -17,7 +17,8 @@
           <li><%= link_to "Logout", :logout, method: :post %></li>
         <% else %>
           <li><%= link_to "Login", :login %></li>
-          <li><%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %></li>
+          <li><%= link_to 'Login with Twitter', auth_at_provider_path(provider: :twitter) %></li>
+          <li><%= link_to 'Login with Github', auth_at_provider_path(provider: :github) %></li>
         <% end %>
       </ul>
     </header>
