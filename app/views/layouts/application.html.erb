@@ -11,10 +11,19 @@
     <header class="clearfix">
       <h1>Флэшкарточкер</h1>
       <ul class="navigation-links">
-        <li><%= link_to "Все карточки", cards_path %></li>
-        <li><%= link_to "Добавить карточку", new_card_path %></li>
+        <% if current_user %>
+          <li><%= link_to "Все карточки", cards_path %></li>
+          <li><%= link_to "Добавить карточку", new_card_path %></li>
+          <li><%= link_to "Logout", :logout, method: :post %></li>
+        <% else %>
+          <li><%= link_to "Login", :login %></li>
+          <li><%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %></li>
+        <% end %>
       </ul>
     </header>
+    <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
     <section>
       <%= yield %>
     </section>

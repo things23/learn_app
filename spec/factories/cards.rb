@@ -3,7 +3,7 @@ FactoryGirl.define do
     original_text "Test"
     translated_text "Тест"
     review_date Time.now
-    user_id 1
+    association :user
 
     factory :card_withount_original_text do
       original_text " "

@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
+  skip_before_filter :require_login
+
   def home
-    @card = Card.for_review.first
+    @card = current_user.cards.for_review.first if current_user
   end
 
   def review_card

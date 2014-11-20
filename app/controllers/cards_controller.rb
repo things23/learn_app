@@ -1,19 +1,21 @@
 class CardsController < ApplicationController
+#  before_action :find_user, only: [:index]
   before_action :find_card, only: [:edit, :update, :destroy]
+  before_filter :require_login
 
   def index
-    @cards = Card.all
+    @cards = current_user.cards
   end
 
   def show
   end
 
   def new
-    @card = Card.new
+    @card = current_user.cards.new
   end
 
   def create
-    @card = Card.new(cards_params)
+    @card = current_user.cards.new(cards_params)
 
     if @card.save
       redirect_to cards_path
@@ -46,5 +48,13 @@ class CardsController < ApplicationController
 
   def cards_params
     params.require(:card).permit(:original_text, :translated_text, :review_date)
+  end
+
+  def not_authenticated
+    redirect_to login_path, alert: "Please login first"
+  end
+
+  def find_user
+    #
   end
 end

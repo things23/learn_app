@@ -10,6 +10,8 @@ gem 'simple_form'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'sorcery', '~> 0.8.6'
+gem 'figaro', '~> 1.0.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'spring',        group: :development
