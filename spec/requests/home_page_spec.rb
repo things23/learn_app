@@ -11,9 +11,9 @@ describe "Home page" do
     click_button "Login"
   end
 
-    it "checks answer" do
-      fill_in "translation", with: "Тест"
-      click_button "Check"
-      expect(page).to have_content("Правильный ответ")
-    end
+  it "checks answer" do
+    fill_in "translation", with: "Тест"
+    click_button "Check"
+    expect(page).to have_content("Правильный ответ")
+  end
 end
