@@ -1,5 +1,4 @@
 class OauthsController < ApplicationController
-
   def oauth
     begin
       login_at(auth_params[:provider])

@@ -1,5 +1,4 @@
 class CardsController < ApplicationController
-#  before_action :find_user, only: [:index]
   before_action :find_card, only: [:edit, :update, :destroy]
   before_filter :require_login
 
@@ -52,9 +51,5 @@ class CardsController < ApplicationController
 
   def not_authenticated
     redirect_to login_path, alert: "Please login first"
-  end
-
-  def find_user
-    #
   end
 end

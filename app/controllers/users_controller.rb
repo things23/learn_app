@@ -3,13 +3,13 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
   def new
     @user = User.new
   end
 
   def create
     @user = User.new(users_params)
-
     if @user.save
       redirect_to :users, notice: "User was successfully created. Log in"
     end
@@ -20,5 +20,4 @@ class UsersController < ApplicationController
   def users_params
     params.require(:user).permit(:email, :password, :password_confirmation, :authentications_attributes)
   end
-
 end

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'oauths/oauth'
-
-  get 'oauths/callback'
-
   root 'static_pages#home'
   resources :cards
   resources :user_sessions
