@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_login, only: [:index]
+  before_action :require_login, only: [:index]
   def index
     @users = User.all
   end
@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(users_params)
     if @user.save
-      redirect_to :users, notice: "User was successfully created. Log in"
+      auto_login(@user)
+      redirect_to root_path, notice: "User was successfully created."
     end
   end
 

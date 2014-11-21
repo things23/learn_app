@@ -2,7 +2,11 @@ class StaticPagesController < ApplicationController
   skip_before_filter :require_login
 
   def home
-    @card = current_user.cards.for_review.first if current_user
+    if current_user
+      @card = current_user.cards.for_review.first
+    else
+      render "landing"
+    end
   end
 
   def review_card

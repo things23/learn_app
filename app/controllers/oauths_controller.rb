@@ -1,22 +1,15 @@
 class OauthsController < ApplicationController
   def oauth
-    begin
       login_at(auth_params[:provider])
-    rescue Exception => e
-      Rails.logger.warn "lol"*200
-      Rails.logger.warn e.message
-    end
   end
 
   def callback
     provider = auth_params[:provider]
-
     if @user = login_from(provider)
       redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
     else
       begin
         @user = create_from(provider)
-
         reset_session
         auto_login(@user)
         redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
