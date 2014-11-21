@@ -1,13 +1,10 @@
 Rails.application.config.sorcery.submodules = [:external]
-
 Rails.application.config.sorcery.configure do |config|
-
   config.external_providers = [:twitter, :github]
-
-  config.twitter.key = "#{Rails.application.secrets.sorcery_twitter_key}"
-  config.twitter.secret = "#{Rails.application.secrets.sorcery_twitter_secret}"
-  config.twitter.callback_url = "#{Rails.application.secrets.sorcery_twitter_callback_url}"
-  config.twitter.user_info_mapping = {:email => "screen_name"}
+  config.twitter.key = "#{ Rails.application.secrets.sorcery_twitter_key }"
+  config.twitter.secret = "#{ Rails.application.secrets.sorcery_twitter_secret }"
+  config.twitter.callback_url = "#{ Rails.application.secrets.sorcery_twitter_callback_url }"
+  config.twitter.user_info_mapping = { :email => "screen_name" }
   #
   # config.facebook.key = "81e7eb5c9bbbbaf6878a"
   # config.facebook.secret = ""
@@ -29,7 +26,6 @@ Rails.application.config.sorcery.configure do |config|
   # config.vk.secret = ""
   # config.vk.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=vk"
   # config.vk.user_info_mapping = {:login => "domain", :name => "full_name"}
-
   config.user_config do |user|
     user.username_attribute_names = [:email]
     user.authentications_class = Authentication

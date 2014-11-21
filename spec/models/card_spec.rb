@@ -21,7 +21,7 @@ describe Card do
   end
 
   describe "uniqueness" do
-    let!(:user) { FactoryGirl.create(:user, email:"xmpl@xmpl.com") }
+    let!(:user) { FactoryGirl.create(:user, email: "xmpl@xmpl.com") }
     it "has unique original_text" do
       card = FactoryGirl.build(:card, user: user, original_text: "unique original text")
       FactoryGirl.create(:card, user: user, original_text: "unique original text")
