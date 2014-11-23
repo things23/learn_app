@@ -1,12 +1,8 @@
-<%= form_for @user do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation, "Confirmation" %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Sign Up" %>
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.error :base %>
+  <%= f.button :submit %>
 <% end %>
