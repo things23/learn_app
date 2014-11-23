@@ -6,7 +6,7 @@ describe "Home page" do
 
   before(:each) do
     visit login_path
-    sign_in(user)
+    sign_in
   end
   let!(:card) { FactoryGirl.create(:card, user: user)  }
   it "checks answer" do
