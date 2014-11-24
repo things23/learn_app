@@ -7,5 +7,4 @@ capybara-*.html
 /db/*.sqlite3-journal
 /public/system
 database.yml
-/config/secrets.yml
 /config/application.yml
