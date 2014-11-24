@@ -1,10 +1,11 @@
 Rails.application.config.sorcery.submodules = [:external]
 Rails.application.config.sorcery.configure do |config|
   config.external_providers = [:twitter, :github]
-  config.twitter.key = Rails.application.secrets.sorcery_twitter_key
-  config.twitter.secret = Rails.application.secrets.sorcery_twitter_secret
-  config.twitter.callback_url = Rails.application.secrets.sorcery_twitter_callback_url
-  config.twitter.user_info_mapping = { :email => "screen_name" }
+
+  config.twitter.key = ENV["SORCERY_TWITTER_CALLBACK_URL"]
+  config.twitter.secret = ENV["SORCERY_TWITTER_KEY"]
+  config.twitter.callback_url = ENV["SORCERY_TWITTER_SECRET"]
+  config.twitter.user_info_mapping = { email: "screen_name" }
   #
   # config.facebook.key = "81e7eb5c9bbbbaf6878a"
   # config.facebook.secret = ""
@@ -12,10 +13,10 @@ Rails.application.config.sorcery.configure do |config|
   # config.facebook.user_info_mapping = {:email => "name"}
   # config.facebook.access_permissions = ["email", "publish_stream"]
   #
-  config.github.key = Rails.application.secrets.sorcery_github_key
-  config.github.secret = Rails.application.secrets.sorcery_github_secret
-  config.github.callback_url = Rails.application.secrets.sorcery_github_callback_url
-  config.github.user_info_mapping = {:email => "name"}
+  config.github.key = ENV["SORCERY_GITHUB_KEY"]
+  config.github.secret = ENV["SORCERY_GITHUB_SECRET"]
+  config.github.callback_url = ENV["SORCERY_GITHUB_CALLBACK_URL"]
+  config.github.user_info_mapping = { email: "name"}
   #
   # config.google.key = ""
   # config.google.secret = ""

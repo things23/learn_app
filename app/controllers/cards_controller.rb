@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :find_card, only: [:edit, :update, :destroy]
-  before_filter :require_login
+  before_action :require_login
 
   def index
     @cards = current_user.cards
