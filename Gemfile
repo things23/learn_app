@@ -11,6 +11,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sorcery', '~> 0.8.6'
+gem 'carrierwave', '~> 0.10.0'
+gem 'rmagick', '~> 2.13.3'
+gem 'fog', '~> 1.25.0'
 gem 'figaro', '~> 1.0.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

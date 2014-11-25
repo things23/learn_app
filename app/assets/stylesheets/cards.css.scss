@@ -1,9 +1,13 @@
 .card {
-  background: #2F4F4F;
+  background: #4682B4;
   box-shadow: 5px 5px 24px 0px rgba(50, 50, 50, 0.75);
   margin-bottom: 15px;
   text-align: center;
   color: white;
+  .upload-image{
+    position: relative;
+    top: 25px;
+  }
   .original-txt {
     padding-top: 1px;
     font-weight: 700;

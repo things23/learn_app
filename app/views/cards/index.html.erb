@@ -1,5 +1,8 @@
 <% @cards.each do |card| %>
   <div class = "card">
+    <div class="upload-image">
+      <%= image_tag card.image_url(:thumb) %>
+    </div>
     <div class = "original-txt">
       <p><%= card.original_text %></p>
     </div>

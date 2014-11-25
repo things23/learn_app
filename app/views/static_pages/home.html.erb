@@ -1,10 +1,12 @@
 <% if @card %>
   <div class="card">
+    <div class="upload-image">
+      <%= image_tag @card.image_url(:thumb)  %>
+    </div>
     <div class="original-txt">
       <p><%= @card.original_text %></p>
     </div>
     <%= form_tag review_card_path, method: :put do %>
-      <%= label_tag :translation, "Enter translation here" %>
       <%= text_field_tag(:translation, nil, placeholder: 'Enter translete here') %>
       <%= hidden_field_tag 'card_id', @card.id %>
       <%= submit_tag("Check", class: "form-submit")  %>
