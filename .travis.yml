@@ -8,7 +8,6 @@ env:
     - AWS_ACCESS_KEY_ID= <%= ENV["AWS_TRAVIS_ACCESS_KEY_ID"] %>
     - AWS_SECRET_ACCESS_KEY= <%= ENV["AWS_TRAVIS_SECRET_ACCESS_KEY"] %>
 before_script:
-  - AWS.stub!
   - cp config/database.yml.travis config/database.yml
   - "RAILS_ENV=test bundle exec rake db:create db:migrate"
 script: bundle exec rspec spec
