@@ -2,7 +2,6 @@
 require "rails_helper"
 
 describe Card do
-
   let(:card) { FactoryGirl.create(:card, original_text: "lorem ipsum") }
 
   subject { card }
