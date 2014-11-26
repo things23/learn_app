@@ -9,7 +9,7 @@
     <%= form_tag review_card_path, method: :put do %>
       <%= text_field_tag(:translation, nil, placeholder: 'Enter translete here') %>
       <%= hidden_field_tag 'card_id', @card.id %>
-      <%= submit_tag("Check", class: "form-submit")  %>
+      <%= submit_tag("Check", class: "form-submit") %>
     <% end %>
   </div>
 <% else %>
