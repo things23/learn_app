@@ -1,0 +1,21 @@
+<p>
+  <%= link_to "Add a deck", new_deck_path   %>
+</p>
+<% @decks.each do |deck| %>
+  <div class="deck">
+      <h2>
+        <%= deck.name %>
+      </h2>
+  </div>
+  <ul>
+    <li>
+      <%= link_to "Add a card", new_deck_card_path(deck) %>
+    </li>
+    <li>
+      <%= link_to "Show cards", deck_cards_path(deck) %>
+    </li>
+    <li>
+      <%= link_to "Current deck", pick_current_deck_user_path(deck), method: :put %>
+    </li>
+  </ul>
+<% end %>
