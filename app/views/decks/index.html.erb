@@ -15,7 +15,7 @@
       <%= link_to "Show cards", deck_cards_path(deck) %>
     </li>
     <li>
-      <%= link_to "Set as current", pick_deck_user_path(deck), method: :put %>
+      <%= link_to "Set as current", pick_deck_user_path(deck, current_deck_id: deck.id), method: :put %>
     </li>
     <li>
       <%= link_to "Delete deck", deck, method: :delete, data: { confirm: 'Are you sure?'} %>

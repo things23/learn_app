@@ -2,16 +2,21 @@ class StaticPagesController < ApplicationController
   before_action :render_landing?
 
   def home
-    if current_user.decks.any?
-      if current_user.current_deck
-        @cards = current_user.decks.find(current_user.current_deck_id).cards
+    if current_user
+      if current_user.decks.any?
+        if current_user.current_deck
+          @cards = current_user.decks.find(current_user.current_deck_id).cards
+        else
+          @cards = current_user.cards
+        end
+        @card = @cards.for_review.first
       else
-        @cards = current_user.cards
+        redirect_to decks_path, notice: "Для начала тренировок создайте колоду"
       end
-      @card = @cards.for_review.first
-    else
-      redirect_to decks_path, notice: "Для начала тренировок создайте колоду"
     end
+  end
+
+  def landing
   end
 
   def review_card

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def pick_deck
-    current_user.update_columns(current_deck_id: params[:id])
+    current_user.update_columns(current_deck_id: params[:current_deck_id])
     redirect_to root_path, notice: "Current deck was picked"
   end
 
