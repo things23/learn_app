@@ -1,21 +1,17 @@
-<% if current_user %>
-  <% if @card %>
-    <div class="card">
-      <div class="upload-image">
-        <%= image_tag @card.image_url(:thumb) %>
-      </div>
-      <div class="original-txt">
-        <p><%= @card.original_text %></p>
-      </div>
-      <%= form_tag review_card_path, method: :put do %>
-        <%= text_field_tag(:translation, nil, placeholder: 'Enter translete here') %>
-        <%= hidden_field_tag 'card_id', @card.id %>
-        <%= submit_tag("Check", class: "form-submit") %>
-      <% end %>
+<% if @card %>
+  <div class="card">
+    <div class="upload-image">
+      <%= image_tag @card.image_url(:thumb) %>
     </div>
-  <% else %>
-    <p class="end-training">Добавьте карточек или выберете другую колоду</p>
-  <% end %>
+    <div class="original-txt">
+      <p><%= @card.original_text %></p>
+    </div>
+    <%= form_tag review_card_path, method: :put do %>
+      <%= text_field_tag(:translation, nil, placeholder: 'Enter translete here') %>
+      <%= hidden_field_tag 'card_id', @card.id %>
+      <%= submit_tag("Check", class: "form-submit") %>
+    <% end %>
+  </div>
 <% else %>
-  <%= render "landing" %>
+  <p class="end-training">Добавьте карточек или выберете другую колоду</p>
 <% end %>

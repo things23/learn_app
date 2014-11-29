@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-  before_action :render_landing?
 
   def home
     if current_user
@@ -13,6 +12,8 @@ class StaticPagesController < ApplicationController
       else
         redirect_to decks_path, notice: "Для начала тренировок создайте колоду"
       end
+    else
+      render "landing"
     end
   end
 
