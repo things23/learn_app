@@ -1,23 +1,24 @@
 class CardsController < ApplicationController
-  before_action :find_card, only: [:edit, :update, :destroy]
+  before_action :find_card, only: [:show, :edit, :update, :destroy]
+  before_action :find_deck, only: [:index, :new, :create]
   before_action :require_login
 
   def index
-    @cards = current_user.cards
+    @cards = @deck.cards
   end
 
   def show
   end
 
   def new
-    @card = current_user.cards.new
+    @card = @deck.cards.new
   end
 
   def create
-    @card = current_user.cards.new(cards_params)
+    @card = @deck.cards.new(cards_params.merge(user: current_user))
 
     if @card.save
-      redirect_to cards_path
+      redirect_to deck_cards_path
     else
       render 'new'
     end
@@ -28,7 +29,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(cards_params)
-      redirect_to cards_path
+      redirect_to @card
     else
       render 'edit'
     end
@@ -40,6 +41,10 @@ class CardsController < ApplicationController
   end
 
   private
+
+  def find_deck
+    @deck = current_user.decks.find(params[:deck_id])
+  end
 
   def find_card
     @card = current_user.cards.find(params[:id])

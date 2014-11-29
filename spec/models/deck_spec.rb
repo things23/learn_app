@@ -1,5 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Deck, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Deck do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:deck) { FactoryGirl.create(:deck, user_id: user.id) }
+
+  subject { deck }
+
+  it { is_expected.to respond_to(:user_id) }
 end

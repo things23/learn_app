@@ -4,7 +4,7 @@
 <% @decks.each do |deck| %>
   <div class="deck">
       <h2>
-        <%= deck.name %>
+        <%= deck.title %>
       </h2>
   </div>
   <ul>
@@ -15,7 +15,10 @@
       <%= link_to "Show cards", deck_cards_path(deck) %>
     </li>
     <li>
-      <%= link_to "Current deck", pick_current_deck_user_path(deck), method: :put %>
+      <%= link_to "Current deck", pick_deck_user_path(deck), method: :put %>
+    </li>
+    <li>
+      <%= link_to "Delete deck", deck, method: :delete, data: { confirm: 'Are you sure?'} %>
     </li>
   </ul>
 <% end %>

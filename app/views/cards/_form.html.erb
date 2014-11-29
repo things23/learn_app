@@ -1,4 +1,4 @@
-<%= simple_form_for @card, html: { multipart: true } do |f| %>
+<%= simple_form_for [@deck, @card], html: { multipart: true } do |f| %>
   <%= f.error_notification %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>

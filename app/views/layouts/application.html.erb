@@ -12,8 +12,7 @@
       <h1><%= link_to "Флэшкарточкер", root_path %></h1>
       <ul class="navigation-links">
         <% if current_user %>
-          <li><%= link_to "Все карточки", cards_path %></li>
-          <li><%= link_to "Добавить карточку", new_card_path %></li>
+          <li><%= link_to "Менеджер колод", decks_path %></li>
           <li><%= link_to "Logout", :logout, method: :post %></li>
         <% else %>
           <li><%= link_to "Login", :login %></li>

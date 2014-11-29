@@ -1,10 +1,12 @@
 class Card < ActiveRecord::Base
   belongs_to :user
-  mount_uploader :image, ImageUploader
+  belongs_to :deck
   validates :original_text, presence: true, uniqueness: true
   validates :translated_text, presence: true
   validate :original_text_cannot_be_equal_to_translated_text
   validates :user_id, presence: true
+  validates :deck_id, presence: true
+  mount_uploader :image, ImageUploader
 
   scope :for_review, -> { where('review_date <= ?', Time.now).order("RANDOM()") }
 

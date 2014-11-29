@@ -1,11 +1,16 @@
 class StaticPagesController < ApplicationController
-  skip_before_action :require_login
+  before_action :current_user?
 
   def home
-    if current_user
-      @card = current_user.cards.for_review.first
+    if current_user.decks.any?
+      if current_user.current_deck_id
+        @cards = current_user.decks.find(current_user.current_deck_id).cards
+      else
+        @cards = current_user.cards
+      end
+      @card = @cards.for_review.first
     else
-      render "landing"
+      redirect_to decks_path, notice: "Для начала тренировок создайте колоду"
     end
   end
 
@@ -18,5 +23,11 @@ class StaticPagesController < ApplicationController
       flash[:wrong] = "Неправильный ответ"
     end
     redirect_to root_path
+  end
+
+  private
+
+  def current_user?
+    render "landing" unless current_user
   end
 end

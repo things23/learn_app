@@ -4,6 +4,7 @@ FactoryGirl.define do
     translated_text "Тест"
     review_date Time.now
     association :user
+    association :deck
 
     factory :card_withount_original_text do
       original_text " "

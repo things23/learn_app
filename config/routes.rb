@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   root "static_pages#home"
-  resources :cards
   resources :user_sessions
-  resources :users
+  resources :decks do
+    resources :cards, shallow: true
+  end
+  resources :users do
+    put "pick_deck", on: :member
+  end
   put "review_card", to: "static_pages#review_card"
 
   get "login" => "user_sessions#new", :as => :login
