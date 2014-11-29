@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
-  before_action :current_user?
+  before_action :render_landing?
 
   def home
     if current_user.decks.any?
-      if current_user.current_deck_id
+      if current_user.current_deck
         @cards = current_user.decks.find(current_user.current_deck_id).cards
       else
         @cards = current_user.cards
@@ -27,7 +27,7 @@ class StaticPagesController < ApplicationController
 
   private
 
-  def current_user?
+  def render_landing?
     render "landing" unless current_user
   end
 end

@@ -22,7 +22,7 @@ class DecksController < ApplicationController
 
   private
 
-    def decks_params
-      params.require(:deck).permit(:title)
-    end
+  def decks_params
+    params.require(:deck).permit(:title)
+  end
 end
