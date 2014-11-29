@@ -18,18 +18,18 @@ describe "Home page" do
 
     describe "but has not decks" do
       before { visit root_path }
-      it { expect(page).to have_content("Для начала тренировок создайте колоду")}
+      it { expect(page).to have_content("Для начала тренировок создайте колоду") }
     end
 
     describe "has empty decks" do
       let!(:deck) { FactoryGirl.create(:deck, user_id: user.id) }
       before { visit root_path }
-      it { expect(page).to have_content("Добавьте карточек или выберете другую колоду")}
+      it { expect(page).to have_content("Добавьте карточек или выберете другую колоду") }
     end
 
     describe "has decks with cards" do
       let!(:deck) { FactoryGirl.create(:deck, user_id: user.id) }
-      let!(:card) { FactoryGirl.create(:card, user_id: user.id, deck_id: deck.id)}
+      let!(:card) { FactoryGirl.create(:card, user_id: user.id, deck_id: deck.id) }
       before { visit root_path }
 
       it "checks answer" do
