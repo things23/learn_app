@@ -29,10 +29,4 @@ class StaticPagesController < ApplicationController
     end
     redirect_to root_path
   end
-
-  private
-
-  def render_landing?
-    render "landing" unless current_user
-  end
 end
