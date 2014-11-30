@@ -2,9 +2,9 @@ class StaticPagesController < ApplicationController
 
   def home
     if current_user
-      if current_user.decks.any?
+      if current_user.decks.present?
         if current_user.current_deck
-          @cards = current_user.decks.find(current_user.current_deck_id).cards
+          @cards = current_user.current_deck.cards
         else
           @cards = current_user.cards
         end
@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
         redirect_to decks_path, notice: "Для начала тренировок создайте колоду"
       end
     else
-      render "landing"
+      redirect_to landing_path
     end
   end
 
