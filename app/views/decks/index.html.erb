@@ -6,8 +6,7 @@
     <h2>
       <%= deck.title %>
     </h2>
-  </div>
-  <ul>
+    <ul>
     <li>
       <%= link_to "Add a card", new_deck_card_path(deck) %>
     </li>
@@ -21,4 +20,5 @@
       <%= link_to "Delete deck", deck, method: :delete, data: { confirm: 'Are you sure?'} %>
     </li>
   </ul>
+  </div>
 <% end %>

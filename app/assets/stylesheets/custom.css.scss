@@ -1,3 +1,10 @@
+@mixin style-for-box {
+  box-shadow: 5px 5px 24px 0px rgba(50, 50, 50, 0.75);
+  margin-bottom: 15px;
+  text-align: center;
+  color: white;
+}
+
 #container {
   margin: 48px auto;
   width: 960px;
@@ -45,6 +52,41 @@
 
 .form-submit {
   margin-bottom: 15px;
+}
+
+.card {
+  @include style-for-box;
+  background: #4682B4;
+  .upload-image {
+    position: relative;
+    top: 25px;
+  }
+  .original-txt {
+    padding-top: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+  span {
+    font-style: italic;
+  }
+}
+
+.deck {
+  background: #2E8B57;
+  @include style-for-box;
+  color: white;
+  ul {
+    li {
+      list-style: none;
+      display: inline;
+      margin-right: 6px;
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 // MISC
