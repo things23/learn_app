@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       auto_login(@user)
       redirect_to root_path, notice: "User was successfully created."
     else
-      render 'new'
+      render "new"
     end
   end
 
