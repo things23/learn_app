@@ -38,14 +38,6 @@ describe Card do
     end
   end
 
-  describe "#change_review_date" do
-    let!(:card) { FactoryGirl.create(:card, original_text: "test test test", user_id: user.id, deck_id: deck.id) }
-    it "change review date" do
-      @three_days_from_now = card.review_date + 3.days
-      expect { card.change_review_date }.to change { card.review_date }.to(@three_days_from_now)
-    end
-  end
-
   describe "#check_answer" do
     it "is wrong answer" do
       translation = "wrong"
@@ -56,4 +48,61 @@ describe Card do
       expect(card.check_answer(translation)).to be true
     end
   end
+
+    describe "#change_review_date" do
+      let!(:card) { FactoryGirl.create(:card, original_text: "testtest", user_id: user.id, deck_id: deck.id) }
+      before(:each) { Timecop.freeze }
+      context "first correct answer" do
+        it "change review date to 12 hours from now" do
+          card.correct_answers_counter =1
+          expect { card.change_review_date }.to change { card.review_date }.to(12.hours.from_now)
+        end
+      end
+
+      context "second correct answer" do
+        it "change review date to three days from now" do
+          card.correct_answers_counter =2
+          expect { card.change_review_date }.to change { card.review_date }.to(3.days.from_now)
+        end
+      end
+
+      context "third correct answer" do
+        it "change review date to 1 week from now" do
+          card.correct_answers_counter =3
+          expect { card.change_review_date }.to change { card.review_date }.to(1.week.from_now)
+        end
+      end
+
+      context "fourth correct answer" do
+        it "change review date to 2 weeks from now" do
+          card.correct_answers_counter =4
+          expect { card.change_review_date }.to change { card.review_date }.to(2.weeks.from_now)
+        end
+      end
+
+      context "fifth correct answer to 1 month from now" do
+        it "change review date" do
+          card.correct_answers_counter =5
+          expect { card.change_review_date }.to change { card.review_date }.to(1.month.from_now)
+        end
+      end
+    end
+
+    describe "#calculate_correct_answers" do
+      it { expect { card.calculate_correct_answers }.to change { card.correct_answers_counter }.by(1) }
+    end
+
+    describe "#calculate_incorrect_answers" do
+      context "when user has correct answers" do
+        it "change review date to 12 hours from now" do
+          Timecop.freeze
+          card.correct_answers_counter = 3
+          expect { card.calculate_incorrect_answers }.to change { card.review_date }.to(12.hours.from_now)
+        end
+      end
+
+      context "when user has not correct answers" do
+        it { expect { card.calculate_incorrect_answers }.to change { card.incorrect_answers_counter }.by(1) }
+      end
+    end
 end

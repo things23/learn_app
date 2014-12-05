@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129000236) do
+ActiveRecord::Schema.define(version: 20141205050314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,14 @@ ActiveRecord::Schema.define(version: 20141129000236) do
   create_table "cards", force: true do |t|
     t.text     "original_text"
     t.text     "translated_text"
-    t.date     "review_date"
+    t.datetime "review_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "image"
     t.integer  "deck_id"
+    t.integer  "correct_answers_counter",   default: 0
+    t.integer  "incorrect_answers_counter", default: 0
   end
 
   add_index "cards", ["deck_id"], name: "index_cards_on_deck_id", using: :btree

@@ -9,7 +9,9 @@
     <div class="translated-txt">
       <p><%= card.translated_text %></p>
     </div>
-    <span><%= card.review_date.strftime("%d/%m/%Y") %></span>
+    <span><%= card.review_date.strftime("%d/%m/%Y/ %H:%M") %></span>
+    <span><%= card.correct_answers_counter %></span>
+    <span><%= card.incorrect_answers_counter %></span>
     <div>
       <%= link_to "Изменить", edit_card_path(card) %>
       <%= link_to "Удалить", card, method: :delete, data: { confirm: 'Are you sure?'} %>

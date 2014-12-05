@@ -23,6 +23,7 @@ group :test do
   gem 'capybara', '~> 2.4.4'
   gem 'poltergeist', '~> 1.5.1'
   gem 'libnotify', '~> 0.8.4'
+  gem 'timecop', '~> 0.7.1'
 end
 
 group :development, :test do

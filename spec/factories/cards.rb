@@ -3,6 +3,8 @@ FactoryGirl.define do
     original_text "Test"
     translated_text "Тест"
     review_date Time.now
+    correct_answers_counter 0
+    incorrect_answers_counter 0
     association :user
     association :deck
 
