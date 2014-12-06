@@ -36,8 +36,9 @@ class CardsController < ApplicationController
   end
 
   def destroy
+    @deck = Deck.find(@card.deck_id)
     @card.destroy
-    redirect_to decks_path
+    redirect_to deck_cards_path(@deck )
   end
 
   private

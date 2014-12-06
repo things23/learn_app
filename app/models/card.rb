@@ -10,11 +10,13 @@ class Card < ActiveRecord::Base
   scope :for_review, -> { where('review_date <= ?', Time.now).order("RANDOM()") }
 
   def check_answer(translation)
-    if translated_text.mb_chars.downcase == translation.mb_chars.downcase
-      calculate_correct_answers
+    check_result = translated_text.mb_chars.downcase == translation.mb_chars.downcase
+    if check_result
+      handling_correct_answers
+      change_review_date
       return true
     else
-      calculate_incorrect_answers
+      handling_incorrect_answers
       return false
     end
   end
@@ -38,21 +40,18 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def calculate_correct_answers
+  def handling_correct_answers
     self.incorrect_answers_counter = 0
-    self.correct_answers_counter += 1
-    change_review_date
+    increment(:correct_answers_counter)
   end
 
-  def calculate_incorrect_answers
-    self.incorrect_answers_counter += 1
+  def handling_incorrect_answers
+    increment(:incorrect_answers_counter)
     if self.correct_answers_counter > 1
-      self.correct_answers_counter = 0
-      update(review_date: 12.hours.from_now)
-    else
-      self.correct_answers_counter = 0
-      save
+      self.review_date = 12.hours.from_now
     end
+    self.correct_answers_counter = 0
+    save
   end
 
   def original_text_cannot_be_equal_to_translated_text

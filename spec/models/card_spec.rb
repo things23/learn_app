@@ -89,21 +89,20 @@ describe Card do
     end
   end
 
-  describe "#calculate_correct_answers" do
-    it { expect { card.calculate_correct_answers }.to change { card.correct_answers_counter }.by(1) }
+  describe "#handling_correct_answers" do
+    it { expect { card.handling_correct_answers }.to change { card.correct_answers_counter }.by(1) }
   end
 
-  describe "#calculate_incorrect_answers" do
+  describe "#handling_incorrect_answers" do
     context "when user has correct answers" do
       it "change review date to 12 hours from now" do
         Timecop.freeze
         card.correct_answers_counter = 3
-        expect { card.calculate_incorrect_answers }.to change { card.review_date }.to(12.hours.from_now)
+        expect { card.handling_incorrect_answers }.to change { card.review_date }.to(12.hours.from_now)
       end
     end
-
     context "when user has not correct answers" do
-      it { expect { card.calculate_incorrect_answers }.to change { card.incorrect_answers_counter }.by(1) }
+      it { expect { card.handling_incorrect_answers }.to change { card.incorrect_answers_counter }.by(1) }
     end
   end
 end
