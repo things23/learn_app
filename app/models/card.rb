@@ -12,11 +12,11 @@ class Card < ActiveRecord::Base
   def check_answer(translation)
     check_result = translated_text.mb_chars.downcase == translation.mb_chars.downcase
     if check_result
-      handling_correct_answers
+      handle_correct_answers
       change_review_date
       return true
     else
-      handling_incorrect_answers
+      handle_incorrect_answers
       return false
     end
   end
@@ -40,12 +40,12 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def handling_correct_answers
+  def handle_correct_answers
     self.incorrect_answers_counter = 0
     increment(:correct_answers_counter)
   end
 
-  def handling_incorrect_answers
+  def handle_incorrect_answers
     increment(:incorrect_answers_counter)
     if self.correct_answers_counter > 1
       self.review_date = 12.hours.from_now
