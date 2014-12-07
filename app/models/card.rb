@@ -12,7 +12,6 @@ class Card < ActiveRecord::Base
   def check_answer(translation)
     translation = translation.mb_chars.downcase.to_s
     levenshtein_check_result = Levenshtein.distance(translated_text, translation)
-    #if levenshtein_check_result == 0 || levenshtein_check_result == 1
     if [0, 1].include?(levenshtein_check_result)
       handle_correct_answers
       change_review_date
