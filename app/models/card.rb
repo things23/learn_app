@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
   belongs_to :user
   belongs_to :deck
-  before_create :set_review_date, :downcase_translated_text
+  before_create :set_default_review_date, :downcase_translated_text
   validates :original_text, presence: true, uniqueness: true
   validates :translated_text, :user_id, :deck_id, presence: true
   validate :original_text_cannot_be_equal_to_translated_text
@@ -56,7 +56,7 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def set_review_date
+  def set_default_review_date
     self.review_date = Time.now
   end
 
