@@ -61,6 +61,6 @@ class Card < ActiveRecord::Base
   end
 
   def downcase_translated_text
-    self.translated_text= translated_text.mb_chars.downcase.to_s
+    self.translated_text = translated_text.mb_chars.downcase.to_s
   end
 end
