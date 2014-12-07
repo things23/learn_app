@@ -15,6 +15,7 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.13.3'
 gem 'fog', '~> 1.25.0'
 gem 'figaro', '~> 1.0.0'
+gem 'levenshtein', '~> 0.2.2'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'spring',        group: :development

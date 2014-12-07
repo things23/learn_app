@@ -10,15 +10,41 @@ class Card < ActiveRecord::Base
   scope :for_review, -> { where('review_date <= ?', Time.now).order("RANDOM()") }
 
   def check_answer(translation)
-    check_result = translated_text.mb_chars.downcase == translation.mb_chars.downcase
-    if check_result
+    @translated_text = translated_text.downcase
+    @transation = translation.downcase
+    #check_result = @translated_text == @transation
+    levenshtein_check_result = Levenshtein.distance(@translated_text, @transation)
+=begin
+    case levenshtein_check_result
+    when 0
       handle_correct_answers
       change_review_date
-      return true
+      return 0
+    when 1
+      #TODO: something for typo
+      handle_correct_answers
+      change_review_date
+      return 1
     else
       handle_incorrect_answers
       return false
     end
+=end
+    if levenshtein_check_result == 0 || levenshtein_check_result == 1
+      handle_correct_answers
+      change_review_date
+    else
+      handle_incorrect_answers
+    end
+    return levenshtein_check_result
+    #if check_result
+    #  handle_correct_answers
+    #  change_review_date
+    #  return true
+    #else
+    #  handle_incorrect_answers
+    #  return false
+    #end
   end
 
   def set_review_date

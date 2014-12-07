@@ -41,11 +41,11 @@ describe Card do
   describe "#check_answer" do
     it "is wrong answer" do
       translation = "wrong"
-      expect(card.check_answer(translation)).to be false
+      expect(card.check_answer(translation)).to eq(5)
     end
     it "is right answer " do
       translation = "Тест"
-      expect(card.check_answer(translation)).to be true
+      expect(card.check_answer(translation)).to eq(0)
     end
   end
 
