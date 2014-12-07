@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
   belongs_to :user
   belongs_to :deck
-  before_create :set_review_date
+  before_create :set_review_date, :downcase_translated_text
   validates :original_text, presence: true, uniqueness: true
   validates :translated_text, :user_id, :deck_id, presence: true
   validate :original_text_cannot_be_equal_to_translated_text
@@ -10,9 +10,7 @@ class Card < ActiveRecord::Base
   scope :for_review, -> { where('review_date <= ?', Time.now).order("RANDOM()") }
 
   def check_answer(translation)
-    @translated_text = translated_text.mb_chars.downcase.to_s
-    #@translation = translation.mb_chars.downcase.to_s
-    levenshtein_check_result = Levenshtein.distance(@translated_text, translation)
+    levenshtein_check_result = Levenshtein.distance(translated_text, translation)
 
     if levenshtein_check_result == 0 || levenshtein_check_result == 1
       handle_correct_answers
@@ -21,10 +19,6 @@ class Card < ActiveRecord::Base
       handle_incorrect_answers
     end
     levenshtein_check_result
-  end
-
-  def set_review_date
-    self.review_date = Time.now
   end
 
   def change_review_date
@@ -60,5 +54,13 @@ class Card < ActiveRecord::Base
     if original_text.downcase == translated_text.downcase
       errors.add(:base, "Original text and translated must be different")
     end
+  end
+
+  def set_review_date
+    self.review_date = Time.now
+  end
+
+  def downcase_translated_text
+    self.translated_text= translated_text.mb_chars.downcase.to_s
   end
 end

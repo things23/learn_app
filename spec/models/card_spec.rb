@@ -44,7 +44,7 @@ describe Card do
       expect(card.check_answer(translation)).to eq(5)
     end
     it "is right answer " do
-      translation = "Тест"
+      translation = "тест"
       expect(card.check_answer(translation)).to eq(0)
     end
   end
