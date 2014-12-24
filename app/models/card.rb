@@ -9,44 +9,35 @@ class Card < ActiveRecord::Base
 
   scope :for_review, -> { where('review_date <= ?', Time.now).order("RANDOM()") }
 
-  def check_answer(translation)
+  def check_answer(translation, time)
     translation = translation.mb_chars.downcase.to_s
     levenshtein_check_result = Levenshtein.distance(translated_text, translation)
     if [0, 1].include?(levenshtein_check_result)
       handle_correct_answers
-      change_review_date
     else
       handle_incorrect_answers
     end
+    change_review_date(levenshtein_check_result, time)
     levenshtein_check_result
   end
 
-  def change_review_date
-    case correct_answers_counter
-    when 1
-      update(review_date: 12.hours.from_now)
-    when 2
-      update(review_date: 3.days.from_now)
-    when 3
-      update(review_date: 1.week.from_now)
-    when 4
-      update(review_date: 2.weeks.from_now)
-    when 5
-      update(review_date: 1.month.from_now)
-    end
+  def change_review_date(typo, time)
+    super_memo = SuperMemo.new(interval, correct_answers_counter, ef, time, typo)
+    new_interval = super_memo.set_interval
+    new_ef = super_memo.get_ef
+    new_review_date = new_interval.days.from_now
+    update_columns(interval: new_interval, ef: new_ef, review_date: new_review_date)
   end
 
   def handle_correct_answers
     self.incorrect_answers_counter = 0
     increment(:correct_answers_counter)
+    save
   end
 
   def handle_incorrect_answers
-    increment(:incorrect_answers_counter)
-    if self.correct_answers_counter > 1
-      self.review_date = 12.hours.from_now
-    end
     self.correct_answers_counter = 0
+    increment(:incorrect_answers_counter)
     save
   end
 
@@ -63,4 +54,5 @@ class Card < ActiveRecord::Base
   def downcase_translated_text
     self.translated_text = translated_text.mb_chars.downcase.to_s
   end
+
 end

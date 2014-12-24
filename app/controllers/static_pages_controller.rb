@@ -23,7 +23,7 @@ class StaticPagesController < ApplicationController
   def review_card
     @card = Card.find(params[:card_id])
     @translation = params[:translation]
-    @check_translation = @card.check_answer(@translation)
+    @check_translation = @card.check_answer(@translation, params[:time])
     if @check_translation == 0
       flash[:right] = "Правильный ответ"
     elsif @check_translation == 1
