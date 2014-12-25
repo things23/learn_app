@@ -5,6 +5,8 @@ FactoryGirl.define do
     review_date Time.now
     correct_answers_counter 0
     incorrect_answers_counter 0
+    ef 2.5
+    interval 1.0
     association :user
     association :deck
 
