@@ -27,7 +27,7 @@ class StaticPagesController < ApplicationController
     if @check_translation == 0
       flash[:right] = "Правильный ответ"
     elsif @check_translation == 1
-      flash[:right] = "Правильно! Вы допустили одну опечатку: #{@translation}"
+      flash[:right] = "Правильно! Вы допустили одну опечатку: #{@translation}. Правильно: #{@card.translated_text}."
     else
       flash[:wrong] = "Неправильный ответ"
     end

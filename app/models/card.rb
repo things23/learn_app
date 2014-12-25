@@ -23,12 +23,9 @@ class Card < ActiveRecord::Base
 
   def change_review_date(typo, time)
     super_memo = SuperMemo.new(interval, correct_answers_counter, ef, time, typo)
-    new_interval = super_memo.interval
-    new_ef = super_memo.ef
-    new_review_date = new_interval.days.from_now
-    update_columns(interval: new_interval,
-                   ef: new_ef,
-                   review_date: new_review_date)
+    update_attributes(interval: super_memo.interval,
+                      ef: super_memo.ef,
+                      review_date: super_memo.interval.days.from_now)
   end
 
   def handle_correct_answers
