@@ -11,6 +11,7 @@ describe Card do
   it { is_expected.to respond_to(:deck_id) }
 
   before { @time = 30.seconds }
+
   describe "translated_text" do
     let!(:card) { FactoryGirl.build(:card, original_text: "original", translated_text: "original",  user_id: user.id, deck_id: deck.id) }
     it "can't be equal to original_text" do
