@@ -31,12 +31,12 @@ class SuperMemo
     when 2
       6
     else
-      (@interval*get_ef).round
+      (@interval * get_ef).round
     end
   end
 
   def get_ef
-    new_ef = @ef + (0.1 - (5-answers_quality)*(0.08+(5-answers_quality)*0.02))
+    new_ef = @ef + (0.1 - (5 - answers_quality) * (0.08 + (5 - answers_quality) * 0.02))
     if new_ef < 1.3
       new_ef = 1.3
     end
