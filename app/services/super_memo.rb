@@ -1,8 +1,8 @@
 class SuperMemo
-  attr_accessor :pre_interval, :correct_answers_counter, :ef, :time, :typo
+  attr_accessor :interval, :correct_answers_counter, :ef, :time, :typo
 
-  def initialize(previous_interval, correct_answers_counter, ef, time, typo)
-    @interval = previous_interval
+  def initialize(interval, correct_answers_counter, ef, time, typo)
+    @interval = interval
     @correct_answers_counter = correct_answers_counter
     @ef = ef
     @time = time
@@ -24,22 +24,19 @@ class SuperMemo
     end
   end
 
-  def set_interval
+  def interval
     case @correct_answers_counter
     when 1
       1
     when 2
       6
     else
-      (@interval * get_ef).round
+      (@interval * ef).round
     end
   end
-
-  def get_ef
+  #the formula from http://www.supermemo.com/english/ol/sm2.htm
+  def ef
     new_ef = @ef + (0.1 - (5 - answers_quality) * (0.08 + (5 - answers_quality) * 0.02))
-    if new_ef < 1.3
-      new_ef = 1.3
-    end
-    new_ef
+    [new_ef, 1.3].max
   end
 end

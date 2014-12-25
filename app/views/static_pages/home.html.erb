@@ -8,10 +8,10 @@
       <p><%= @card.original_text %></p>
     </div>
     <%= form_tag review_card_path, method: :put do %>
-      <%= text_field_tag(:translation, nil, placeholder: 'Enter translete here') %>
+      <%= text_field_tag(:translation, nil, placeholder: 'Enter translation here') %>
       <%= hidden_field_tag "card_id", @card.id %>
-      <%= hidden_field_tag "time", "" %>
-      <%= submit_tag("Check", class: "form-submit") %>
+      <%= hidden_field_tag "time", 0 %>
+      <%= submit_tag("Check", id: "answer_submit") %>
     <% end %>
   </div>
 <% else %>

@@ -10,7 +10,7 @@ describe Card do
   it { is_expected.to respond_to(:user_id) }
   it { is_expected.to respond_to(:deck_id) }
 
-  before { @time = 4617 }
+  before { @time = 30.seconds }
   describe "translated_text" do
     let!(:card) { FactoryGirl.build(:card, original_text: "original", translated_text: "original",  user_id: user.id, deck_id: deck.id) }
     it "can't be equal to original_text" do
@@ -70,7 +70,6 @@ describe Card do
 
     context "third correct answer" do
       it "change review date to appropriate for ef" do
-        @time = 8415
         card.interval = 6.0
         card.ef = 2.2
         card.correct_answers_counter = 3

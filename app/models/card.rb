@@ -23,10 +23,12 @@ class Card < ActiveRecord::Base
 
   def change_review_date(typo, time)
     super_memo = SuperMemo.new(interval, correct_answers_counter, ef, time, typo)
-    new_interval = super_memo.set_interval
-    new_ef = super_memo.get_ef
+    new_interval = super_memo.interval
+    new_ef = super_memo.ef
     new_review_date = new_interval.days.from_now
-    update_columns(interval: new_interval, ef: new_ef, review_date: new_review_date)
+    update_columns(interval: new_interval,
+                   ef: new_ef,
+                   review_date: new_review_date)
   end
 
   def handle_correct_answers
@@ -54,5 +56,4 @@ class Card < ActiveRecord::Base
   def downcase_translated_text
     self.translated_text = translated_text.mb_chars.downcase.to_s
   end
-
 end
