@@ -1,5 +1,5 @@
 == README
-{<img src="https://travis-ci.org/things23/flashcardr.svg?branch=requast-spec-testing" alt="Build Status" />}[https://travis-ci.org/things23/flashcardr]
+{<img src="https://travis-ci.org/things23/learn_app.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/things23/learn_app]
 {<img src="https://codeclimate.com/github/things23/flashcardr/badges/gpa.svg" />}[https://codeclimate.com/github/things23/flashcardr]
 
 Trainning app
